@@ -1,0 +1,28 @@
+name: Deploy NexaCore Static Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
+        run: |
+          rsync -avz --delete \
+          --exclude '.git' \
+          -e "ssh -p ${{ secrets.VPS_PORT }}" \
+          ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/nexacore.agata-pride.web.id
