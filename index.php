@@ -42,7 +42,7 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title fade-in">Transformasi Digital untuk Masa Depan Bisnis Anda</h1>
+                <h1 class="hero-title fade-in">Transformasi Analog untuk Masa Depan Bisnis Anda</h1>
                 <p class="hero-subtitle fade-in">Solusi teknologi inovatif yang membantu perusahaan berkembang dengan cepat, efisien, dan terukur di era digital.</p>
                 <div class="hero-cta fade-in">
                     <a href="#contact" class="btn btn-primary">Mulai Sekarang</a>
